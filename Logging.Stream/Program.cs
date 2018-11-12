@@ -15,9 +15,10 @@ namespace Logging.Stream
 
             using (var stream = new FileStream(file, FileMode.Append, FileAccess.Write))
             {
-                LogPattern.DoLog(line =>
+                LogPattern.DoLog(args, line =>
                 {
-                    var data = Encoding.UTF8.GetBytes($"{DateTime.Now:yyyy/mm/dd HH:mm:ss} INFO {line}{Environment.NewLine}");
+                    var data = Encoding.UTF8.GetBytes(
+                        $"{DateTime.Now:yyyy/mm/dd HH:mm:ss} INFO {line}{Environment.NewLine}");
                     stream.Write(data);
                 });
             }

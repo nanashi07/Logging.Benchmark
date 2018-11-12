@@ -10,10 +10,12 @@ namespace Logging.File
         {
             var file = "logfile.log";
             System.IO.File.Delete(file);
-            LogPattern.DoLog(line =>
-            {
-                System.IO.File.AppendAllText(file, $"{DateTime.Now:yyyy/mm/dd HH:mm:ss} INFO {line}{Environment.NewLine}");
-            });
+            LogPattern.DoLog(args,
+                line =>
+                {
+                    System.IO.File.AppendAllText(file,
+                        $"{DateTime.Now:yyyy/mm/dd HH:mm:ss} INFO {line}{Environment.NewLine}");
+                });
         }
     }
 }

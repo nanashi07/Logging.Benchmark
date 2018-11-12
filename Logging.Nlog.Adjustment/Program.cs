@@ -22,8 +22,9 @@ namespace Logging.Nlog.Adjustment
 
             var logger = LogManager.GetCurrentClassLogger();
 
-            LogPattern.DoLog(line => { logger.Info(line); });
+            LogPattern.DoLog(args, line => { logger.Info(line); });
 
-            LogManager.Shutdown();        }
+            LogManager.Shutdown();
+        }
     }
 }

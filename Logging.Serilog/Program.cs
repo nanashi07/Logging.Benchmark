@@ -19,7 +19,7 @@ namespace Logging.Serilog
                 .WriteTo.File("log.serilog.log")
                 .CreateLogger();
 
-            LogPattern.DoLog(line => { Log.Information(line); });
+            LogPattern.DoLog(args, line => { Log.Information(line); });
         }
     }
 }
