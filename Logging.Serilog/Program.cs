@@ -16,7 +16,7 @@ namespace Logging.Serilog
             }
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("log.serilog.log")
+                .WriteTo.File("log.serilog.log", buffered: true, flushToDiskInterval: TimeSpan.FromMilliseconds(1000))
                 .CreateLogger();
 
             LogPattern.DoLog(args, line => { Log.Information(line); });
